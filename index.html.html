@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmovisiones y la Condición Humana | Antropología Filosófica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5EFE6;
+    --cream-dark: #EBE0D0;
+    --navy: #1A1A2E;
+    --navy-light: #2A2A4E;
+    --gold: #B8960C;
+    --gold-light: #E8C547;
+    --col1: #7B3B1E;
+    --col1-bg: #F9EDE6;
+    --col2: #1A5C3A;
+    --col2-bg: #E6F4EC;
+    --col3: #4A2D6E;
+    --col3-bg: #EDE6F5;
+    --col4: #1A3D6B;
+    --col4-bg: #E6EEF9;
+    --text: #2C2C2C;
+    --text-muted: #6B6560;
+    --border: rgba(100,80,60,0.18);
+    --section-gap: 5rem;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(245,239,230,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 600;
+    color: var(--navy); letter-spacing: 0.02em;
+  }
+  .nav-links {
+    display: flex; gap: 1.8rem; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none; font-size: 13px; font-weight: 600;
+    color: var(--text-muted); letter-spacing: 0.06em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 7rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 20% 30%, rgba(123,59,30,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 70%, rgba(74,45,110,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 50% 10%, rgba(26,92,58,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    border: 1px solid var(--gold-light);
+    padding: 6px 18px; border-radius: 20px;
+    margin-bottom: 2rem; display: inline-block;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 700; line-height: 1.15;
+    color: var(--navy); max-width: 820px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--col1);
+  }
+  .hero-sub {
+    font-size: 18px; color: var(--text-muted);
+    max-width: 580px; margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-meta {
+    display: flex; gap: 3rem; justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    text-align: center;
+  }
+  .hero-meta-item span {
+    display: block; font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-muted); font-weight: 600;
+  }
+  .hero-meta-item strong {
+    font-family: 'Playfair Display', serif; font-size: 15px;
+    color: var(--navy);
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; color: var(--text-muted); font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  .scroll-hint::before {
+    content: '';
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SECTION BASE ─────────────────────────────────── */
+  .section { padding: var(--section-gap) 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-full { padding: var(--section-gap) 0; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700; color: var(--navy);
+    line-height: 1.2; margin-bottom: 1.2rem;
+  }
+  .section-intro {
+    font-size: 17px; color: var(--text-muted); max-width: 720px;
+    font-weight: 300; line-height: 1.8;
+  }
+
+  /* ── DIVIDER ──────────────────────────────────────── */
+  .divider {
+    display: flex; align-items: center; gap: 1.2rem;
+    margin: 4rem auto; max-width: 1100px; padding: 0 2rem;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .divider span {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: var(--text-muted); font-size: 22px;
+  }
+
+  /* ── INTRO SECTION ────────────────────────────────── */
+  .intro-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start; margin-top: 3rem;
+  }
+  .intro-text p {
+    margin-bottom: 1.2rem; font-size: 16.5px;
+  }
+  .dimensions-list {
+    background: white; border: 1px solid var(--border);
+    border-radius: 12px; padding: 2rem;
+    border-left: 4px solid var(--gold);
+  }
+  .dimensions-list h4 {
+    font-family: 'Playfair Display', serif; font-size: 16px;
+    font-weight: 600; color: var(--navy); margin-bottom: 1.2rem;
+  }
+  .dim-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 1rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .dim-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .dim-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+    background: var(--cream-dark);
+  }
+  .dim-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--navy); }
+  .dim-text span { font-size: 13px; color: var(--text-muted); }
+
+  /* ── COSMOVISION CARDS ────────────────────────────── */
+  .cosmos-section {
+    padding: var(--section-gap) 0;
+    background: white;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .cosmos-section .inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  .cosmos-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 2rem; margin-top: 3rem;
+  }
+  .cosmos-card {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: white;
+  }
+  .cosmos-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+  .cosmos-card-header {
+    padding: 2rem 2rem 1.5rem;
+    position: relative;
+  }
+  .cosmos-card.c1 .cosmos-card-header { background: var(--col1-bg); border-bottom: 3px solid var(--col1); }
+  .cosmos-card.c2 .cosmos-card-header { background: var(--col2-bg); border-bottom: 3px solid var(--col2); }
+  .cosmos-card.c3 .cosmos-card-header { background: var(--col3-bg); border-bottom: 3px solid var(--col3); }
+  .cosmos-card.c4 .cosmos-card-header { background: var(--col4-bg); border-bottom: 3px solid var(--col4); }
+
+  .cosmos-num {
+    font-family: 'Playfair Display', serif; font-size: 48px;
+    font-weight: 700; opacity: 0.12; position: absolute;
+    top: 1rem; right: 1.5rem; line-height: 1;
+  }
+  .cosmos-card.c1 .cosmos-num { color: var(--col1); }
+  .cosmos-card.c2 .cosmos-num { color: var(--col2); }
+  .cosmos-card.c3 .cosmos-num { color: var(--col3); }
+  .cosmos-card.c4 .cosmos-num { color: var(--col4); }
+
+  .cosmos-tag {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 700; padding: 4px 10px; border-radius: 4px;
+    display: inline-block; margin-bottom: 0.7rem;
+  }
+  .cosmos-card.c1 .cosmos-tag { background: var(--col1); color: white; }
+  .cosmos-card.c2 .cosmos-tag { background: var(--col2); color: white; }
+  .cosmos-card.c3 .cosmos-tag { background: var(--col3); color: white; }
+  .cosmos-card.c4 .cosmos-tag { background: var(--col4); color: white; }
+
+  .cosmos-card-header h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.4rem;
+    font-weight: 700; line-height: 1.2; margin-bottom: 0.4rem;
+    color: var(--navy);
+  }
+  .cosmos-card-header .subtitle {
+    font-size: 13.5px; color: var(--text-muted); font-style: italic;
+  }
+
+  .cosmos-card-body { padding: 1.8rem 2rem; }
+  .cosmos-card-body p { font-size: 15.5px; line-height: 1.75; margin-bottom: 1rem; }
+
+  .quote-block {
+    background: var(--cream); border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0; padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+  }
+  .quote-block.c1 { border-left-color: var(--col1); background: var(--col1-bg); }
+  .quote-block.c2 { border-left-color: var(--col2); background: var(--col2-bg); }
+  .quote-block.c3 { border-left-color: var(--col3); background: var(--col3-bg); }
+  .quote-block.c4 { border-left-color: var(--col4); background: var(--col4-bg); }
+  .quote-block p {
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 15px; line-height: 1.7; margin-bottom: 0.4rem !important;
+    color: var(--navy);
+  }
+  .quote-block cite {
+    font-size: 12px; color: var(--text-muted); font-style: normal;
+    font-weight: 600; letter-spacing: 0.02em;
+  }
+
+  .dim-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.2rem;
+  }
+  .dim-tag {
+    font-size: 11px; padding: 3px 10px; border-radius: 20px;
+    border: 1px solid; font-weight: 600; letter-spacing: 0.04em;
+  }
+  .cosmos-card.c1 .dim-tag { border-color: var(--col1); color: var(--col1); }
+  .cosmos-card.c2 .dim-tag { border-color: var(--col2); color: var(--col2); }
+  .cosmos-card.c3 .dim-tag { border-color: var(--col3); color: var(--col3); }
+  .cosmos-card.c4 .dim-tag { border-color: var(--col4); color: var(--col4); }
+
+  /* ── IMAGE PLACEHOLDER ────────────────────────────── */
+  .img-placeholder {
+    width: 100%; height: 160px;
+    border-radius: 10px; margin-bottom: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px;
+    border: 2px dashed var(--border);
+    font-size: 13px; color: var(--text-muted);
+    font-style: italic;
+  }
+  .img-placeholder span { font-size: 24px; }
+
+  /* ── COMPARISON TABLE ─────────────────────────────── */
+  .table-section { overflow-x: auto; margin-top: 3rem; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 14px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+  }
+  thead th {
+    padding: 1rem 1.2rem;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.04em; text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  thead th:first-child { background: var(--navy); color: white; }
+  thead th.th1 { background: var(--col1); color: white; }
+  thead th.th2 { background: var(--col2); color: white; }
+  thead th.th3 { background: var(--col3); color: white; }
+  thead th.th4 { background: var(--col4); color: white; }
+
+  tbody tr:nth-child(even) td { background: rgba(245,239,230,0.5); }
+  tbody td {
+    padding: 0.9rem 1.2rem; border-bottom: 1px solid var(--border);
+    vertical-align: top; line-height: 1.6; font-size: 13.5px;
+  }
+  tbody td:first-child {
+    font-weight: 700; font-size: 13px;
+    color: var(--navy); white-space: nowrap;
+  }
+
+  /* ── CONCLUSION ───────────────────────────────────── */
+  .conclusion-section {
+    background: var(--navy);
+    padding: var(--section-gap) 2rem;
+    color: white;
+  }
+  .conclusion-inner {
+    max-width: 860px; margin: 0 auto;
+  }
+  .conclusion-section .section-label { color: var(--gold-light); }
+  .conclusion-section .section-title { color: white; }
+  .conclusion-text p {
+    font-size: 17px; line-height: 1.85; margin-bottom: 1.4rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .conclusion-text p strong { color: white; font-weight: 600; }
+
+  .highlight-box {
+    border: 1px solid rgba(232,197,71,0.4);
+    border-left: 4px solid var(--gold-light);
+    background: rgba(232,197,71,0.07);
+    border-radius: 0 10px 10px 0;
+    padding: 1.4rem 1.8rem; margin: 2rem 0;
+  }
+  .highlight-box p {
+    font-family: 'EB Garamond', serif; font-size: 20px !important;
+    font-style: italic; color: rgba(255,255,255,0.95) !important;
+    line-height: 1.6 !important; margin: 0 !important;
+  }
+
+  /* ── BIBLIOGRAPHY ─────────────────────────────────── */
+  .bib-section { background: var(--cream-dark); padding: var(--section-gap) 2rem; }
+  .bib-inner { max-width: 900px; margin: 0 auto; }
+  .bib-list { margin-top: 2.5rem; }
+  .bib-item {
+    padding: 1.1rem 0; border-bottom: 1px solid var(--border);
+    font-size: 14.5px; line-height: 1.7;
+  }
+  .bib-item:last-child { border-bottom: none; }
+  .bib-item strong { display: block; margin-bottom: 0.2rem; color: var(--navy); }
+
+  /* ── FOOTER ───────────────────────────────────────── */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2rem;
+    font-size: 13px;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── ANIMATIONS ───────────────────────────────────── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ───────────────────────────────────── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .intro-grid { grid-template-columns: 1fr; }
+    .cosmos-grid { grid-template-columns: 1fr; }
+    table { font-size: 12px; }
+    thead th, tbody td { padding: 0.6rem 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ────────────────────────────────── -->
+<nav>
+  <div class="nav-brand">Antropología Filosófica</div>
+  <ul class="nav-links">
+    <li><a href="#intro">Introducción</a></li>
+    <li><a href="#cosmovisiones">Cosmovisiones</a></li>
+    <li><a href="#comparacion">Comparación</a></li>
+    <li><a href="#conclusion">Conclusión</a></li>
+    <li><a href="#bibliografia">Bibliografía</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-eyebrow">Antropología Filosófica — Resultado de Aprendizaje 2 y 3</div>
+  <h1>Cosmovisiones y la <em>Condición Humana</em></h1>
+  <p class="hero-sub">
+    Un diálogo intercultural sobre las dimensiones corporal, simbólica, racional,
+    ética y espiritual del ser humano.
+  </p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span>Asignatura</span>
+      <strong>Antropología Filosófica</strong>
+    </div>
+    <div class="hero-meta-item">
+      <span>Cosmovisiones</span>
+      <strong>4 Perspectivas</strong>
+    </div>
+    <div class="hero-meta-item">
+      <span>Dimensiones</span>
+      <strong>5 Analizadas</strong>
+    </div>
+    <div class="hero-meta-item">
+      <span>Fuentes</span>
+      <strong>6 Autores</strong>
+    </div>
+  </div>
+  <div class="scroll-hint">Explorar</div>
+</header>
+
+<!-- ── INTRODUCTION ──────────────────────────────── -->
+<section id="intro" class="section fade-in">
+  <p class="section-label">Punto de partida</p>
+  <h2 class="section-title">¿Qué significa ser humano?</h2>
+  <div class="intro-grid">
+    <div class="intro-text">
+      <p>
+        La pregunta por la condición humana no admite una única respuesta. Cada cultura, cada época y cada tradición de pensamiento ha elaborado una cosmovisión —un sistema de creencias, valores y prácticas simbólicas— que define qué somos, de dónde venimos y hacia dónde nos dirigimos.
+      </p>
+      <p>
+        Ernst Cassirer señaló que el ser humano no habita simplemente un universo físico, sino un <strong>universo simbólico</strong>: el lenguaje, el mito, el arte y la religión son los hilos que conforman la red de la experiencia humana. No es la razón en abstracto, sino la capacidad de crear y habitar símbolos lo que nos define (Cassirer, 1967, pp. 26–47).
+      </p>
+      <p>
+        Esta página compara cuatro grandes cosmovisiones —la occidental clásica, la indígena y afrocolombiana, la oriental-mística y la transhumanista— examinando cómo cada una concibe al ser humano en sus dimensiones fundamentales. El objetivo no es juzgar cuál es "más verdadera", sino abrir el diálogo intercultural que todo ejercicio filosófico riguroso exige.
+      </p>
+      <p>
+        García Cuadrado advierte que toda antropología filosófica debe afrontar la tensión entre las certezas parciales de las distintas tradiciones y la irreducible complejidad del ser humano (García Cuadrado, 2003, pp. 35–42). Ese es precisamente el horizonte de este trabajo.
+      </p>
+    </div>
+    <div>
+      <div class="dimensions-list">
+        <h4>Las cinco dimensiones analizadas</h4>
+        <div class="dim-item">
+          <div class="dim-icon">🧬</div>
+          <div class="dim-text">
+            <strong>Dimensión Corporal</strong>
+            <span>Relación entre cuerpo, materia y vida biológica</span>
+          </div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-icon">🔣</div>
+          <div class="dim-text">
+            <strong>Dimensión Simbólica</strong>
+            <span>Lenguaje, mito, rito y creación de sentido</span>
+          </div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-icon">🧠</div>
+          <div class="dim-text">
+            <strong>Dimensión Racional</strong>
+            <span>Conocimiento, logos y capacidad reflexiva</span>
+          </div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-icon">⚖️</div>
+          <div class="dim-text">
+            <strong>Dimensión Ética</strong>
+            <span>Responsabilidad, alteridad y vida en comunidad</span>
+          </div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-icon">✨</div>
+          <div class="dim-text">
+            <strong>Dimensión Espiritual</strong>
+            <span>Trascendencia, mística y sentido último</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span>❧</span></div>
+
+<!-- ── COSMOVISIONS ───────────────────────────────── -->
+<section id="cosmovisiones" class="cosmos-section">
+  <div class="inner">
+    <p class="section-label">Las perspectivas</p>
+    <h2 class="section-title">Cuatro cosmovisiones sobre lo humano</h2>
+    <p class="section-intro">
+      Cada cosmovisión responde a la pregunta antropológica fundamental desde su propio horizonte cultural, histórico y espiritual.
+    </p>
+
+    <div class="cosmos-grid">
+
+      <!-- ── CARD 1: OCCIDENTAL CLÁSICA ── -->
+      <div class="cosmos-card c1 fade-in">
+        <div class="cosmos-card-header">
+          <div class="cosmos-num">01</div>
+          <span class="cosmos-tag">Occidente Clásico</span>
+          <h3>Cosmovisión Griega-Racional</h3>
+          <p class="subtitle">Del alma como forma al animal político</p>
+        </div>
+        <div class="cosmos-card-body">
+          <div class="img-placeholder">
+            <span>🏛️</span>
+            <em>Añadir imagen: Escuela de Atenas / Aristóteles</em>
+          </div>
+          <p>
+            Para Aristóteles, el ser humano es un <strong>animal racional y político</strong> (<em>zoon logikon / politikon</em>). En su tratado <em>Acerca del alma</em>, el Estagirita propone que el alma (<em>psyché</em>) es la "forma" del cuerpo natural que tiene potencialmente vida —no una sustancia separada, sino el principio que organiza y da sentido a la materia corporal.
+          </p>
+          <div class="quote-block c1">
+            <p>"El alma es la entelequia primera de un cuerpo natural que tiene la potencia de vivir. [...] Y tal es el cuerpo que posee órganos."</p>
+            <cite>— Aristóteles, Acerca del alma, II.1, 412a20 (en Calvo Martínez, 1978, p. 52)</cite>
+          </div>
+          <p>
+            Aristóteles distingue tres funciones del alma: la <strong>nutritiva o vegetativa</strong> (compartida con plantas y animales), la <strong>sensitiva</strong> (compartida con los animales) y la <strong>racional o noética</strong>, exclusiva del ser humano. Esta última permite el conocimiento intelectual, la deliberación ética y la vida en comunidad política.
+          </p>
+          <p>
+            Desde esta perspectiva, la razón (<em>nous</em>) no es un accidente sino el <em>télos</em> —la finalidad— del ser humano. La vida buena (<em>eudaimonía</em>) consiste precisamente en el ejercicio pleno de la razón en el marco de la <em>polis</em>. García Cuadrado señala que esta tradición inaugura la noción occidental de persona como sujeto dotado de razón y libertad (García Cuadrado, 2003, pp. 55–68).
+          </p>
+          <div class="dim-tags">
+            <span class="dim-tag">Cuerpo como materia organizada</span>
+            <span class="dim-tag">Logos como esencia</span>
+            <span class="dim-tag">Polis y eudaimonía</span>
+            <span class="dim-tag">Teleología racional</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CARD 2: INDÍGENA / AFROCOLOMBIANA ── -->
+      <div class="cosmos-card c2 fade-in">
+        <div class="cosmos-card-header">
+          <div class="cosmos-num">02</div>
+          <span class="cosmos-tag">Indígena · Afrocolombiana</span>
+          <h3>Cosmovisión Comunitaria-Relacional</h3>
+          <p class="subtitle">Ser humano como nudo en la red de la vida</p>
+        </div>
+        <div class="cosmos-card-body">
+          <div class="img-placeholder">
+            <span>🌿</span>
+            <em>Añadir imagen: Arte indígena / comunidad afro</em>
+          </div>
+          <p>
+            En las cosmovisiones indígenas y afrocolombianas, el ser humano no es una entidad individual y autónoma, sino un <strong>nudo de relaciones</strong> dentro de una comunidad más amplia que incluye a los ancestros, la tierra, los animales y las fuerzas espirituales. La persona es inseparable de su territorio y de su comunidad.
+          </p>
+          <div class="quote-block c2">
+            <p>"En la lógica indígena, la persona no 'tiene' comunidad; la comunidad 'hace' a la persona. El ser individual es siempre un ser-con, un ser-desde y un ser-hacia los otros."</p>
+            <cite>— Paráfrasis de González Arnáiz (2021, pp. 38–44)</cite>
+          </div>
+          <p>
+            El principio ubuntu —proveniente de tradiciones africanas y presente también en cosmovisiones afrocolombianas— expresa esta intuición: <em>"Soy porque somos"</em>. La identidad personal no precede a la comunidad; es la comunidad la que la constituye. González Arnáiz señala que la responsabilidad ética surge precisamente de esta conciencia de la alteridad: somos responsables porque somos, antes que nada, seres-en-relación (González Arnáiz, 2021, pp. 28–35).
+          </p>
+          <p>
+            Cassirer ilumina cómo estas cosmovisiones elaboran su visión del mundo principalmente a través del <strong>mito y el rito</strong>: el símbolo no es un adorno del pensamiento sino su forma primaria. El carnaval, el vuelo del chamán, la minga son actos simbólicos que actualizan la pertenencia al cosmos (Cassirer, 1967, pp. 47–61).
+          </p>
+          <div class="dim-tags">
+            <span class="dim-tag">Cuerpo como tierra sagrada</span>
+            <span class="dim-tag">Mito y rito como conocimiento</span>
+            <span class="dim-tag">Ética comunitaria / Ubuntu</span>
+            <span class="dim-tag">Ancestralidad y territorio</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CARD 3: ORIENTAL / MÍSTICA ── -->
+      <div class="cosmos-card c3 fade-in">
+        <div class="cosmos-card-header">
+          <div class="cosmos-num">03</div>
+          <span class="cosmos-tag">Oriental · Mística</span>
+          <h3>Cosmovisión Cósmica-Contemplativa</h3>
+          <p class="subtitle">La conciencia como horizonte del ser</p>
+        </div>
+        <div class="cosmos-card-body">
+          <div class="img-placeholder">
+            <span>☸️</span>
+            <em>Añadir imagen: Meditación / mandalas / cosmos</em>
+          </div>
+          <p>
+            Raimon Panikkar propone que las espiritualidades orientales —budismo, hinduismo, taoísmo— no conciben al ser humano como un sujeto separado del cosmos que lo rodea. El ser humano es, ante todo, <strong>conciencia en proceso</strong>: no una sustancia fija sino un flujo de experiencia que se transforma y que participa de una realidad mayor.
+          </p>
+          <div class="quote-block c3">
+            <p>"La experiencia mística no es la huida del mundo, sino su plenificación. La mística es la vida humana vivida en su máxima intensidad y plenitud."</p>
+            <cite>— Panikkar, R. (2015). Mística, plenitud de vida, p. 12</cite>
+          </div>
+          <p>
+            En el budismo, la noción de <em>anatman</em> (no-yo) desafía la idea occidental de un "yo" fijo e independiente. La conciencia no es "mía"; es un proceso interdependiente (<em>pratītyasamutpāda</em>). En el hinduismo, el <em>Ātman</em> individual es idéntico al <em>Brahman</em> cósmico: la separación entre el yo y el todo es una ilusión (<em>māyā</em>).
+          </p>
+          <p>
+            Panikkar señala que esta visión no divide el ser humano en cuerpo-alma como dos sustancias enfrentadas, sino que lo comprende como una unidad triádica: cuerpo-psique-espíritu (<em>sarx–psyché–pneuma</em>), donde el espíritu no suprime lo corporal sino que lo transfigura (Panikkar, 2015, pp. 22–38). La espiritualidad es aquí la dimensión más incluyente, no la más abstracta.
+          </p>
+          <div class="dim-tags">
+            <span class="dim-tag">Cuerpo-conciencia no dual</span>
+            <span class="dim-tag">Símbolo como umbral</span>
+            <span class="dim-tag">Logos cósmico / Dharma</span>
+            <span class="dim-tag">Contemplación y compasión</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CARD 4: TRANSHUMANISMO ── -->
+      <div class="cosmos-card c4 fade-in">
+        <div class="cosmos-card-header">
+          <div class="cosmos-num">04</div>
+          <span class="cosmos-tag">Contemporáneo</span>
+          <h3>Cosmovisión Transhumanista</h3>
+          <p class="subtitle">La técnica como nuevo sujeto de la historia</p>
+        </div>
+        <div class="cosmos-card-body">
+          <div class="img-placeholder">
+            <span>🤖</span>
+            <em>Añadir imagen: IA / cyborg / biotecnología</em>
+          </div>
+          <p>
+            El transhumanismo y el posthumanismo contemporáneo representan una ruptura radical: el ser humano ya no es el punto de llegada de la evolución, sino su <strong>punto de partida hacia algo radicalmente diferente</strong>. La técnica —la biotecnología, la inteligencia artificial, el mejoramiento cognitivo— se convierte en el nuevo agente de transformación de lo humano.
+          </p>
+          <div class="quote-block c4">
+            <p>"La técnica ya no es una herramienta del ser humano; es el nuevo sujeto de la historia. El ser humano se convierte en material de trabajo de sus propias creaciones técnicas."</p>
+            <cite>— Fernández Mateo, J. (2021). Revista Iberoamericana de Bioética, 16(4), p. 8</cite>
+          </div>
+          <p>
+            Fernández Mateo advierte que el posthumanismo tecnológico no solo transforma el cuerpo —considerado ahora como <em>hardware</em> mejorable—, sino que amenaza con disolver las categorías éticas y espirituales que han definido lo humano: la vulnerabilidad, la finitud, la interdependencia y la gratuidad (Fernández Mateo, 2021, pp. 15–28).
+          </p>
+          <p>
+            Desde una perspectiva crítica, surge la pregunta: ¿es posible "mejorar" al ser humano sin destruir lo específicamente humano? La tensión entre la promesa de un sujeto ilimitado y la pérdida del cuerpo vulnerable es el dilema ético central de nuestra época. García Cuadrado y González Arnáiz coinciden en señalar que sin vulnerabilidad no hay responsabilidad, y sin responsabilidad no hay ética (García Cuadrado, 2003, p. 78).
+          </p>
+          <div class="dim-tags">
+            <span class="dim-tag">Cuerpo como hardware</span>
+            <span class="dim-tag">Datos como nuevo lenguaje</span>
+            <span class="dim-tag">Razón instrumental</span>
+            <span class="dim-tag">Crisis ética del sujeto</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cosmos-grid -->
+  </div>
+</section>
+
+<div class="divider"><span>❧</span></div>
+
+<!-- ── COMPARISON TABLE ───────────────────────────── -->
+<section id="comparacion" class="section fade-in">
+  <p class="section-label">Análisis comparativo</p>
+  <h2 class="section-title">Las cinco dimensiones en perspectiva</h2>
+  <p class="section-intro">
+    La siguiente tabla sintetiza cómo cada cosmovisión concibe las dimensiones fundamentales de la condición humana, permitiendo identificar convergencias y tensiones productivas para el diálogo intercultural.
+  </p>
+
+  <div class="table-section">
+    <table>
+      <thead>
+        <tr>
+          <th>Dimensión</th>
+          <th class="th1">🏛 Occidental Clásica</th>
+          <th class="th2">🌿 Indígena / Afro</th>
+          <th class="th3">☸ Oriental / Mística</th>
+          <th class="th4">🤖 Transhumanismo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🧬 Corporal</td>
+          <td>Unión hilemórfica: el cuerpo es materia organizada por el alma como forma (Aristóteles, 412a). El cuerpo tiene dignidad en tanto instrumento del alma.</td>
+          <td>El cuerpo es territorio sagrado, extensión de la tierra. Enfermedad y salud son equilibrios relacionales con la comunidad y la naturaleza.</td>
+          <td>El cuerpo no se opone al espíritu; es su vehículo y su expresión. En el yoga, el tai-chi y la meditación, el cuerpo es camino hacia la plenitud (Panikkar, 2015, p. 22).</td>
+          <td>El cuerpo es hardware biológico susceptible de optimización. El ciberespacio y los implantes prometen superar sus límites. El riesgo: cosificar lo vulnerable (Fernández Mateo, 2021, p. 20).</td>
+        </tr>
+        <tr>
+          <td>🔣 Simbólica</td>
+          <td>El lenguaje (logos) es la expresión privilegiada de la razón. Los mitos son alegorías a ser superadas por la filosofía (Cassirer, 1967, p. 32).</td>
+          <td>El mito, el rito y la danza son formas primarias de conocimiento, no pre-racionales sino para-racionales. El símbolo sostiene la identidad colectiva y cósmica (Cassirer, 1967, pp. 47–61).</td>
+          <td>El mantra, el kōan y el símbolo sagrado son umbrales hacia lo inefable. El símbolo no representa: trans-forma. El lenguaje apunta más allá de sí mismo (Panikkar, 2015, p. 17).</td>
+          <td>Los datos, los algoritmos y el código son el nuevo lenguaje universal. El símbolo analógico cede ante la información digital. Riesgo de empobrecer la riqueza simbólica humana.</td>
+        </tr>
+        <tr>
+          <td>🧠 Racional</td>
+          <td>La razón (nous) es la facultad más elevada y el télos del ser humano. La racionalidad permite la deliberación ética y la vida política (Aristóteles en García Cuadrado, 2003, p. 55).</td>
+          <td>La razón es una forma de conocimiento entre otras, no la suprema. El saber de los ancestros, la intuición corporal y el conocimiento del territorio tienen igual o mayor validez.</td>
+          <td>La razón discursiva (vijñāna) es útil pero limitada. La intuición directa (prajñā, buddhi) es superior. La meditación permite un conocimiento no-dual que trasciende el sujeto-objeto.</td>
+          <td>La razón se tecnifica: se vuelve razón instrumental al servicio de la eficiencia. La IA puede superar la inteligencia humana en velocidad y precisión, pero no en sabiduría ética.</td>
+        </tr>
+        <tr>
+          <td>⚖️ Ética</td>
+          <td>La virtud (aretê) como justo medio; la eudaimonía como fin. La ética es racional y universal, fundada en la naturaleza humana (García Cuadrado, 2003, pp. 72–80).</td>
+          <td>La ética es comunitaria y relacional: la responsabilidad surge del reconocimiento del otro. "Soy porque somos." El cuidado de la vida y del territorio es el imperativo primero (González Arnáiz, 2021, pp. 38–50).</td>
+          <td>La compasión (karuṇā) como fundamento ético universal. El ser humano es responsable de todos los seres sensibles. La no-violencia (ahimsā) como imperativo (Panikkar, 2015, pp. 30–38).</td>
+          <td>La ética queda subordinada a la técnica. El riesgo mayor: la desigualdad en el acceso al "mejoramiento". Solo los privilegiados podrían "mejorar", profundizando la exclusión (Fernández Mateo, 2021, pp. 35–48).</td>
+        </tr>
+        <tr>
+          <td>✨ Espiritual</td>
+          <td>La dimensión espiritual se racionaliza: el alma inmortal garantiza la dignidad humana. En el neoplatonismo, el espíritu asciende hacia el Bien supremo (García Cuadrado, 2003, p. 62).</td>
+          <td>Lo espiritual es inmanente al mundo: los espíritus de los ancestros, las fuerzas de la naturaleza y el cosmos son presencias activas. No hay separación entre sagrado y profano.</td>
+          <td>La experiencia mística es la plenitud de lo humano, no su negación. La iluminación (bodhi, moksha) es la realización de lo que ya somos en profundidad (Panikkar, 2015, pp. 1–12).</td>
+          <td>La espiritualidad queda al margen o es descartada. En el transhumanismo radical, la inmortalidad digital reemplaza la trascendencia espiritual: el paraíso es tecnológico.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── CONCLUSION ─────────────────────────────────── -->
+<section id="conclusion" class="conclusion-section">
+  <div class="conclusion-inner fade-in">
+    <p class="section-label">Reflexión personal</p>
+    <h2 class="section-title">La importancia del diálogo intercultural</h2>
+
+    <div class="conclusion-text">
+      <p>
+        El recorrido por estas cuatro cosmovisiones revela una verdad incómoda para cualquier enfoque que aspire a la universalidad: <strong>no existe una única respuesta legítima a la pregunta por la condición humana</strong>. La tradición occidental racional, con todo su rigor, no agota las posibilidades. La cosmovisión indígena y afrocolombiana no es un residuo pre-moderno: es un saber diferente y necesario.
+      </p>
+
+      <div class="highlight-box">
+        <p>"El ser humano es el único ser que necesita preguntar qué es. Y la riqueza de esa pregunta está en que jamás admite una respuesta definitiva."</p>
+      </div>
+
+      <p>
+        Lo que más me interpela de este ejercicio comparativo es precisamente la advertencia de Fernández Mateo: vivimos en una época en que la lógica técnica tiende a colonizar todas las dimensiones de lo humano. Cuando el cuerpo se vuelve <em>hardware</em>, cuando la ética se reduce a algoritmos de optimización y cuando la espiritualidad se convierte en <em>wellness</em> cuantificable, algo fundamental se pierde.
+      </p>
+      <p>
+        Las cosmovisiones indígenas y orientales nos recuerdan, con urgencia contemporánea, que <strong>la vulnerabilidad no es un defecto del diseño humano sino su condición más preciosa</strong>. Es desde la vulnerabilidad —y no desde la omnipotencia técnica— que surge la responsabilidad ética que González Arnáiz describe como la condición responsiva del ser humano: la capacidad de responder al llamado del otro.
+      </p>
+      <p>
+        El diálogo intercultural no es un ejercicio de relativismo vacío. Es, como diría Panikkar, una <strong>fecundación mutua</strong>: aprender de la alteridad para comprenderse mejor a uno mismo. La Grecia de Aristóteles nos enseña la claridad del concepto; las comunidades indígenas, el arraigo en la tierra; el budismo, la liberación de la ilusión del ego; y el transhumanismo, la responsabilidad de pensar críticamente los futuros que construimos.
+      </p>
+      <p>
+        Una antropología filosófica responsable para el siglo XXI debe ser, necesariamente, <strong>intercultural, interdisciplinar y situada</strong>. Situada en las realidades concretas de desigualdad, exclusión y devastación ecológica que caracterizan nuestro contexto colombiano y latinoamericano. Solo desde esa situación —y no desde abstracciones universales— podrá el pensamiento filosófico cumplir su función más noble: iluminar la práctica transformadora.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── BIBLIOGRAPHY ───────────────────────────────── -->
+<section id="bibliografia" class="bib-section">
+  <div class="bib-inner fade-in">
+    <p class="section-label">Fuentes académicas</p>
+    <h2 class="section-title">Referencias bibliográficas</h2>
+    <p class="section-intro">Presentadas en formato APA 7.ª edición.</p>
+
+    <div class="bib-list">
+      <div class="bib-item">
+        <strong>Aristóteles (1978).</strong>
+        <em>Acerca del alma</em> (T. Calvo Martínez, Trad., pp. 35–75). Editorial Gredos.
+        <a href="https://eltalondeaquiles.pucp.edu.pe/wp-content/uploads/2015/09/Aristoteles-Acerca-del-alma.-Gredos.-Trad-Tomas-Calvo.pdf" target="_blank" style="color:var(--col1); font-size:12px;">Ver fuente ↗</a>
+      </div>
+      <div class="bib-item">
+        <strong>Cassirer, E. (1967).</strong>
+        <em>Antropología filosófica: Introducción a una filosofía de la cultura</em> (E. Ímaz, Trad., pp. 1–80). Fondo de Cultura Económica.
+        <a href="https://raularagon.com.ar/biblioteca/libros/Cassirer/Ernst%20Cassirer%20-%20Antropologia%20Filosofica.pdf" target="_blank" style="color:var(--col1); font-size:12px;">Ver fuente ↗</a>
+      </div>
+      <div class="bib-item">
+        <strong>García Cuadrado, J. A. (2003).</strong>
+        <em>Antropología filosófica: una introducción a la filosofía del hombre</em> (pp. 35–80). EUNSA, Ediciones Universidad de Navarra.
+      </div>
+      <div class="bib-item">
+        <strong>González Arnáiz, G. (2021).</strong>
+        <em>Ética y responsabilidad: la condición responsiva del ser humano</em> (pp. 15–60). Editorial Tecnos.
+      </div>
+      <div class="bib-item">
+        <strong>Panikkar, R. (2015).</strong>
+        <em>Obras completas. Tomo I: Mística y espiritualidad. Vol. 1: Mística, plenitud de vida</em> (pp. 1–40). Herder. https://doi.org/10.2307/j.ctvt9jzpr
+      </div>
+      <div class="bib-item">
+        <strong>Fernández Mateo, J. (2021).</strong>
+        La técnica es el nuevo sujeto de la historia: posthumanismo tecnológico y el crepúsculo de lo humano (pp. 1–50). <em>Revista Iberoamericana de Bioética, 16</em>(4). https://doi.org/10.14422/rib.i16.y2021.004
+        <a href="https://doi.org/10.14422/rib.i16.y2021.004" target="_blank" style="color:var(--col1); font-size:12px;">Ver fuente ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <p>Trabajo elaborado para <strong>Antropología Filosófica</strong> — Universidad Nacional Abierta y a Distancia (UNAD)</p>
+  <p style="margin-top:0.4rem">Resultados de Aprendizaje 2 y 3 · Actividad: Página Web Comparativa de Cosmovisiones</p>
+</footer>
+
+<!-- ── SCROLL ANIMATION ───────────────────────────── -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
